@@ -16,7 +16,7 @@ var Game = function(){
       if(pins === 1){
         finalScore=20;
       }
-      else if (pins === 2) {
+      else {
         if (isFirstRoll) {
           isFirstRoll = false;
           firstRollPin = pins;
@@ -26,12 +26,14 @@ var Game = function(){
           //isFirstRoll = true;
 
           finalScore = pins + firstRollPin;
+          if (finalScore == 10) {
+            finalScore = 0;
+          }
         }
       }
     }
   };
 };
-
 
 describe("Bowling game scoring", function() {
   // beforeAll("define the common function", function() {
@@ -76,7 +78,7 @@ describe("A Game", function() {
   //arrage
   var game = new Game(); 
 
-  describe("When the first roll is 2.", function(){
+  describe("When the first roll is 2,", function(){
     beforeEach(function(){
       game.roll(2);
     });
@@ -87,16 +89,30 @@ describe("A Game", function() {
     });
   });
 
-  describe("When the first two rolls are 2.", function(){
+  describe("When the first two rolls are 2,", function(){
     beforeEach(function(){
       game.roll(2);
       game.roll(2);
     });
 
-    it("A new game has score of zero.", function(){  
+    it("A new game has score of 4,", function(){  
         //assert
         expect(game.score()).toBe(4);
     });
   });
+
+  describe("When roll 2 & 8,", function(){
+    beforeEach(function(){
+      game.roll(2);
+      game.roll(8);
+    });
+
+    it("A new game has score of zero.", function(){  
+        //assert
+        expect(game.score()).toBe(0);
+    });
+  });
+
+
 
 });
