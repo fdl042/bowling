@@ -1,0 +1,38 @@
+var Game = function(){
+  return {
+    gameScore: -1,
+    score: function(){
+      return this.gameScore;
+    },
+    roll: function(pins) {
+      if (pins === 0){
+        this.gameScore = 0;
+      }
+    }
+  };
+}
+
+describe("Jasmine mechanics", function() {
+
+  it("Should work OK", function() {
+    expect(true).toBe(true);
+  });
+});
+
+describe("Bowling game scoring", function() {
+  function rollWholeGame(game, pins) {
+    for (i=0; i<20; i++){
+      game.roll(pins);
+    }
+  };
+
+  it("All gutter balls score equals zero.", function(){
+    //arrage
+    var game = new Game();  
+    //act
+    rollWholeGame(game, 0); 
+    //assert
+    expect(game.score()).toBe(0);
+  });
+
+});

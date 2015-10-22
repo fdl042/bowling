@@ -9,6 +9,7 @@
   "author": "Dongmin Liu",
   "license": "MIT",
   "devDependencies": {
-    "jasmine": "^2.3.2"
+    "jasmine": "^2.3.2",
+    "testem": "^0.9.8"
   }
 }
