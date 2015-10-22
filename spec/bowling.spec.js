@@ -27,6 +27,7 @@ var Game = function(){
 
           finalScore = pins + firstRollPin;
           if (finalScore == 10) {
+            firstRollPin = 10;
             finalScore = 0;
           }
         }
@@ -113,6 +114,17 @@ describe("A Game", function() {
     });
   });
 
+  describe("When roll 2 & 8; 2", function(){
+    beforeEach(function(){
+      game.roll(2);
+      game.roll(8);
+      game.roll(2);
+    });
 
+    it("A new game has score of 12.", function(){  
+        //assert
+        expect(game.score()).toBe(12);
+    });
+  });
 
 });
